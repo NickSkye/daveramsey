@@ -34,17 +34,27 @@ function changePanels(newIndex){
 
     $('.sp .items span').removeClass('selected');
     $('.sp .items span:nth-child('+(newIndex+1)+')').addClass('selected');
-
     $('.sp .panels').animate({left:newPanelPosition},1000);
     $('.sp .panel-container').animate({height:newPanelHeight},1000);
-
     $.get("/baby-steps.json").done( function(data){
+        var friends = '';
         $.each(data.friends, function(index, value) {
 
-                console.log(value.babyStep);
+            if((newIndex + 1) == value.babyStep){
+                friends += value.firstName + ' ' + value.lastName + ', ';
+
+
+            }
+
 
 
         });
+        if(friends != ''){
+            $(".heading").html('<p>' + friends + 'are on this step.</p>');
+        }
+        else {
+            $(".heading").html('');
+        }
     });
 
 }
