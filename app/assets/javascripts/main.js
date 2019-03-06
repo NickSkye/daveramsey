@@ -50,7 +50,7 @@ function changePanels(newIndex){
 
         });
         if(friends != ''){
-            $(".heading").html('<p>' + friends + 'are on this step.</p>');
+            $(".heading").html('<p><span style="color: #36abe1;">' + friends + '</span>are on this step.</p>');
         }
         else {
             $(".heading").html('');
